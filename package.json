@@ -1,0 +1,25 @@
+{
+  "name": "view-stack-partition-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "./scripts/build -e=./index.js,./screens/a.js,./screens/b.js,./screens/c.js -o=./assets/ -m=./index.js",
+    "prod": "./scripts/build -e=./index.js,./screens/a.js,./screens/b.js,./screens/c.js -o=./assets/ -m=./index.js --url='http://localhost:3333/'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "minimist": "^1.2.0",
+    "partition-bundle": "^2.5.0",
+    "yo-yoify": "git+https://git@github.com/kristoferjoseph/yo-yoify.git"
+  },
+  "dependencies": {
+    "bel": "^5.0.2",
+    "sheetify": "^6.1.0",
+    "view-stack": "^14.0.0",
+    "yo-yoify-append-child": "^1.0.0"
+  }
+}
