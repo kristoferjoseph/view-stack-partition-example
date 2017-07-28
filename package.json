@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "./scripts/build -e=./index.js,./screens/a.js,./screens/b.js,./screens/c.js -o=./assets/ -m=./index.js",
-    "prod": "./scripts/build -e=./index.js,./screens/a.js,./screens/b.js,./screens/c.js -o=./assets/ -m=./index.js --url='http://localhost:3333/'"
+    "build": "./scripts/build -e=./index.js,./screens/a.js,./screens/b.js,./screens/c.js -o=assets -m=./index.js --url='assets'",
+    "prod": "./scripts/build -e=./index.js,./screens/a.js,./screens/b.js,./screens/c.js -o=assets -m=./index.js --url='http://localhost:3333'"
   },
   "keywords": [],
   "author": "",

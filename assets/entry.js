@@ -342,7 +342,8 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 },{});
 
-loadjs.files = ["./assets/entry.js","./assets/a.js","./assets/b.js","./assets/c.js"]
+loadjs.url = "assets/";
+loadjs.files = ["entry.js","a.js","b.js","c.js"]
 loadjs.map = {"1":[],"2":[],"3":[],"4":[],"5":[],"6":[],"7":[],"8":[],"9":[],"10":[],"11":[],"12":[],"13":[],"14":[],"15":[],"16":[],"17":[],"18":[],"19":[],"20":[],"21":[],"./index.js":[],"a":[1],"b":[2],"c":[3]};
 loadjs.d("21",function(require,module,exports){
 module.exports = function appendChild (el, childs) {

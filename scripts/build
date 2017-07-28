@@ -3,7 +3,6 @@ var path = require('path')
 var parse = require('minimist')
 var browserify = require('browserify')
 var path = require('path')
-var prefix = process.env.PREFIX
 var args = parse(process.argv)
 var entries = args.e.split(',') || args.entries.split(',')
 var output = args.o || args.output
@@ -11,33 +10,33 @@ var main = args.m || args.main
 var url = args.url || ''
 var options = {
     main: main,
-    map: {}
+    map: {},
+    output: output,
+    url: url
 }
 entries.forEach(f=> {
   // We need to treat the entry file differently. You can't expose an alias for it.
   if (f === main) {
     console.info('require:', f)
-    console.info('output:', 'entry.js\n')
+    console.info('output:', 'entry.js')
+    console.info('remote:', url+'/'+'entry.js\n')
     // Going to hard code entry.js because works.
-    options.map[output+'entry.js'] = [f]
+    options.map['entry.js'] = [f]
   } else {
     console.info('require:', f)
-    console.info('output:', output+f.split('/').pop())
+    console.info('output:', output+'/'+f.split('/').pop())
     console.info('expose:', f.split('/').pop().replace('.js', ''), '\n')
-    options.map[output+f.split('/').pop()] = [{
+    console.info('remote:', url+'/'+f.split('/').pop()+'\n')
+    options.map[f.split('/').pop()] = [{
       require: f,
-      expose: f.split('/').pop().replace('.js', ''),
-      url: url
+      expose: f.split('/').pop().replace('.js', '')
     }]
   }
 })
 
 console.info('partitioning bundle with options:\n', options)
 
-var b = browserify({
-  entries:entries,
-  paths: ['./node_modules']
-})
+var b = browserify()
 b.plugin('partition-bundle', options)
 b.transform('yo-yoify', {global: true})
 b.bundle()
