@@ -18,15 +18,15 @@ entries.forEach(f=> {
   // We need to treat the entry file differently. You can't expose an alias for it.
   if (f === main) {
     console.info('require:', f)
-    console.info('output:', 'entry.js')
-    console.info('remote:', url+'/'+'entry.js\n')
+    console.info('output:', output+'/'+'entry.js')
+    console.info('script src:', url+'/'+'entry.js\n')
     // Going to hard code entry.js because works.
     options.map['entry.js'] = [f]
   } else {
     console.info('require:', f)
     console.info('output:', output+'/'+f.split('/').pop())
-    console.info('expose:', f.split('/').pop().replace('.js', ''), '\n')
-    console.info('remote:', url+'/'+f.split('/').pop()+'\n')
+    console.info('expose:', f.split('/').pop().replace('.js', ''))
+    console.info('script src:', url+'/'+f.split('/').pop()+'\n')
     options.map[f.split('/').pop()] = [{
       require: f,
       expose: f.split('/').pop().replace('.js', '')
